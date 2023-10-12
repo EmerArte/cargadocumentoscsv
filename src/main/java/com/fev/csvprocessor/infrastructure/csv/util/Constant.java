@@ -7,7 +7,8 @@ public final class Constant {
 
     public static final String[] CSV_HEADERS = {
             "Codigo factura",
-            "Nombre y apellidos",
+            "Nombres",
+            "Apellidos",
             "Dirección",
             "Valor a pagar",
             "Fecha de vencimiento",

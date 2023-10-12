@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Builder(toBuilder = true)
 @ToString
@@ -12,8 +13,9 @@ public class BillDto {
     private BigInteger billCode;
     private String name;
     private String lastName;
+    private String address;
     private BigDecimal amount;
-    private LocalDateTime paymentExpirationDate;
-    private LocalDateTime paymentDueDate;
+    private LocalDate paymentExpirationDate;
+    private LocalDate paymentDueDate;
     private String status;
 }

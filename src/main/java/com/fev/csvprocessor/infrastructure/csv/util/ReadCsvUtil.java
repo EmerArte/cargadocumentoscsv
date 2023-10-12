@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public final class ReadCsvUtil {
 
     public static List<BillDto> readCsv(InputStream file) {
         List<BillDto> bankAccountList = new ArrayList<>();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         try{
             Reader reader = new InputStreamReader(file);
             CSVReader csvReader = new CSVReader(reader);  // Reading All Records at once into a List<String[]>
@@ -40,10 +41,11 @@ public final class ReadCsvUtil {
                 bankAccountList.add(BillDto.builder().billCode(BigInteger.valueOf(Long.parseLong(nextRecord[0])))
                         .name(nextRecord[1])
                         .lastName(nextRecord[2])
-                        .amount(BigDecimal.valueOf(Float.parseFloat(nextRecord[3])))
-                        .paymentExpirationDate(LocalDateTime.parse(nextRecord[4], dtf))
-                        .paymentDueDate(LocalDateTime.parse(nextRecord[5], dtf))
-                        .status(nextRecord[6])
+                        .address(nextRecord[3])
+                        .amount(BigDecimal.valueOf(Float.parseFloat(nextRecord[4])))
+                        .paymentExpirationDate(LocalDate.parse(nextRecord[5], dtf))
+                        .paymentDueDate(LocalDate.parse(nextRecord[6], dtf))
+                        .status(nextRecord[7])
                         .build());
             }
         } catch (IOException | CsvValidationException e) {

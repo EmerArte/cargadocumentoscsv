@@ -1,5 +1,8 @@
 package com.fev.csvprocessor.infrastructure.common.dto;
 
+import lombok.Getter;
+
+@Getter
 public class ResponseDto<T>{
     private T data;
     private String message;

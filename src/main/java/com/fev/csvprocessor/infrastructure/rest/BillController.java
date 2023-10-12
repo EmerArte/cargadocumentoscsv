@@ -8,6 +8,7 @@ import com.fev.csvprocessor.infrastructure.common.dto.ResponseDto;
 import com.fev.csvprocessor.infrastructure.common.mapper.BillDtoMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,9 +26,9 @@ public class BillController {
     private final BillDtoMapper billDtoMapper = BillDtoMapper.getInstance();
 
     @GetMapping("/list")
-    public ResponseEntity<ResponseDto<List<BillDto>>> listData(PageableQuery pageableQuery){
+    public ResponseEntity<ResponseDto<Page<BillDto>>> listData(PageableQuery pageableQuery){
         log.info("Listing data");
-        return ResponseEntity.ok(new ResponseDto<>(listSavedBillsUseCase.findAll(pageableQuery).stream().map(billDtoMapper::map).toList(), null));
+        return ResponseEntity.ok(new ResponseDto<>(this.listSavedBillsUseCase.findAll(pageableQuery).map(billDtoMapper::map), null));
     }
     @PostMapping("/save")
     public ResponseEntity<ResponseDto<String>> saveData(@RequestParam("file")MultipartFile file){

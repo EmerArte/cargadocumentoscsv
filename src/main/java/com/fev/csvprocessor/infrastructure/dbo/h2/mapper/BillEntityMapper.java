@@ -22,7 +22,7 @@ public class BillEntityMapper implements IMapper<BillEntity, BillModel> {
         if(billModel == null){
             return null;
         }
-        return new BillEntity(billModel.getBillCode(), billModel.getName(), billModel.getLastName(),
+        return new BillEntity(billModel.getBillCode(), billModel.getName(), billModel.getLastName(), billModel.getAddress(),
                 billModel.getAmount(), billModel.getPaymentExpirationDate(), billModel.getPaymentDueDate(), billModel.getStatus());
     }
 
@@ -31,7 +31,7 @@ public class BillEntityMapper implements IMapper<BillEntity, BillModel> {
         if(billEntity == null){
             return null;
         }
-        return new BillModel(billEntity.getBillCode(), billEntity.getName(), billEntity.getLastName(),
+        return new BillModel(billEntity.getBillCode(), billEntity.getName(), billEntity.getLastName(), billEntity.getAddress(),
                 billEntity.getAmount(), billEntity.getPaymentExpirationDate(), billEntity.getPaymentDueDate(), billEntity.getStatus());
     }
 }

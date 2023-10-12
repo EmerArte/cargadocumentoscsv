@@ -9,4 +9,5 @@ import java.util.List;
 public interface BillStorageGateway {
     void saveAll(List<BillModel> billModels) throws DefaultCustomException;
     Page<BillModel> findAll(PageableQuery pageableQuery);
+    List<BillModel> findAll();
 }

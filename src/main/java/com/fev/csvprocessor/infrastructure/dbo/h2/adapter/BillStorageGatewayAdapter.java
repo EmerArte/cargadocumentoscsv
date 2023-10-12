@@ -42,4 +42,9 @@ public class BillStorageGatewayAdapter implements BillStorageGateway {
         }
 
     }
+
+    @Override
+    public List<BillModel> findAll() {
+        return this.billRepository.findAll().stream().map(billEntityMapper::reverseMap).toList();
+    }
 }

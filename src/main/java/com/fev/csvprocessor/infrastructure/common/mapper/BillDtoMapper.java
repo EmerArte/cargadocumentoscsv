@@ -26,6 +26,7 @@ public class BillDtoMapper implements IMapper<BillDto, BillModel> {
                 .billCode(billModel.getBillCode())
                 .name(billModel.getName())
                 .lastName(billModel.getLastName())
+                .address(billModel.getAddress())
                 .amount(billModel.getAmount())
                 .paymentDueDate(billModel.getPaymentDueDate())
                 .paymentExpirationDate(billModel.getPaymentExpirationDate())
@@ -42,6 +43,7 @@ public class BillDtoMapper implements IMapper<BillDto, BillModel> {
                 billDto.getBillCode(),
                 billDto.getName(),
                 billDto.getLastName(),
+                billDto.getAddress(),
                 billDto.getAmount(),
                 billDto.getPaymentExpirationDate(),
                 billDto.getPaymentDueDate(),

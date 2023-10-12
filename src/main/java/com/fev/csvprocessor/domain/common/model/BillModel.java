@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Getter
 @Setter
@@ -14,8 +15,9 @@ public class BillModel {
     private BigInteger billCode;
     private String name;
     private String lastName;
+    private String address;
     private BigDecimal amount;
-    private LocalDateTime paymentExpirationDate;
-    private LocalDateTime paymentDueDate;
+    private LocalDate paymentExpirationDate;
+    private LocalDate paymentDueDate;
     private String status;
 }
