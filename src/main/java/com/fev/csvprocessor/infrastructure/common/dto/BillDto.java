@@ -1,11 +1,12 @@
 package com.fev.csvprocessor.infrastructure.common.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 @Builder(toBuilder = true)
 @ToString
 @Getter

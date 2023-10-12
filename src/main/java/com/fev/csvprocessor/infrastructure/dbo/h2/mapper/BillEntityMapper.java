@@ -1,8 +1,8 @@
 package com.fev.csvprocessor.infrastructure.dbo.h2.mapper;
 
 import com.fev.csvprocessor.domain.common.model.BillModel;
-import com.fev.csvprocessor.infrastructure.dbo.h2.entity.BillEntity;
 import com.fev.csvprocessor.infrastructure.common.mapper.base.IMapper;
+import com.fev.csvprocessor.infrastructure.dbo.h2.entity.BillEntity;
 
 public class BillEntityMapper implements IMapper<BillEntity, BillModel> {
     private static BillEntityMapper instance;
