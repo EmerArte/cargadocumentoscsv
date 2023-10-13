@@ -6,6 +6,8 @@ import com.fev.csvprocessor.domain.common.model.BillModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 public class ListSavedBillsUseCase {
     private final BillStorageGateway billStorageGateway;
@@ -13,5 +15,10 @@ public class ListSavedBillsUseCase {
     public Page<BillModel> findAll(PageableQuery pageableQuery){
         return billStorageGateway.findAll(pageableQuery);
     }
+
+    public List<BillModel> findAll( ){
+        return billStorageGateway.findAll();
+    }
+
 
 }

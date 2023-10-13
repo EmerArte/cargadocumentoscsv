@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -28,6 +30,12 @@ public class BillController {
     public ResponseEntity<ResponseDto<Page<BillDto>>> listData(PageableQuery pageableQuery){
         log.info("Listing data");
         return ResponseEntity.ok(new ResponseDto<>(this.listSavedBillsUseCase.findAll(pageableQuery).map(billDtoMapper::map), null));
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<ResponseDto<List<BillDto>>> listData(){
+        log.info("Listing data");
+        return ResponseEntity.ok(new ResponseDto<>(this.listSavedBillsUseCase.findAll().stream().map(billDtoMapper::map).collect(Collectors.toList()), null));
     }
     @PostMapping("/save")
     public ResponseEntity<ResponseDto<String>> saveData(@RequestParam("file")MultipartFile file){
