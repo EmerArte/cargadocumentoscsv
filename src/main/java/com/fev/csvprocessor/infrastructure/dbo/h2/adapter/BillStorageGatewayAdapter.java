@@ -57,6 +57,7 @@ public class BillStorageGatewayAdapter implements BillStorageGateway {
             }
             this.billRepository.rejectBilling(billCode);
         }catch (Exception e){
+            e.printStackTrace();
             log.error("error updating bill status {} input: {}", e.getMessage(), billCode);
             throw new DefaultCustomException("Error updating bill status", e);
         }

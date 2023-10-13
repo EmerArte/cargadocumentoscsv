@@ -15,5 +15,5 @@ server:
     context-path: /api
 custom:
   cors:
-    allowed-origins: http://localhost:3000
-    allowed-methods: GET, POST
+    allowed-origins: http://localhost:5173
+    allowed-methods: GET, POST, PATCH
