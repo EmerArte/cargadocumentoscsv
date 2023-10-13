@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -46,5 +47,18 @@ public class BillStorageGatewayAdapter implements BillStorageGateway {
     @Override
     public List<BillModel> findAll() {
         return this.billRepository.findAll().stream().map(billEntityMapper::reverseMap).toList();
+    }
+
+    @Override
+    public void rejectBilling(BigInteger billCode) throws DefaultCustomException {
+        try {
+            if(this.billRepository.findById(billCode).orElse(null) == null){
+                throw new DefaultCustomException("Bill not found");
+            }
+            this.billRepository.rejectBilling(billCode);
+        }catch (Exception e){
+            log.error("error updating bill status {} input: {}", e.getMessage(), billCode);
+            throw new DefaultCustomException("Error updating bill status", e);
+        }
     }
 }
