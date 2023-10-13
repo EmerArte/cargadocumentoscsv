@@ -35,10 +35,10 @@ public class BillController {
         return ResponseEntity.ok(new ResponseDto<>(this.listSavedBillsUseCase.findAll(pageableQuery).map(billDtoMapper::map), null));
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<ResponseDto<List<BillDto>>> listData(){
+    @GetMapping("/list-all")
+    public ResponseEntity<ResponseDto<List<BillDto>>> listAllData(){
         log.info("Listing data");
-        return ResponseEntity.ok(new ResponseDto<>(this.listSavedBillsUseCase.findAll().stream().map(billDtoMapper::map).collect(Collectors.toList()), null));
+        return ResponseEntity.ok(new ResponseDto<>(this.listSavedBillsUseCase.findAll().stream().map(billDtoMapper::map).toList(), null));
     }
     @PostMapping("/save")
     public ResponseEntity<ResponseDto<String>> saveData(@RequestParam("file")MultipartFile file){
